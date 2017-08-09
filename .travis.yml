@@ -3,6 +3,7 @@
 
 # Using Java for the project
 language: java
+"dist": "precise"
 jdk:
 # JDK 8 is set to deploy the docs and artifacts
   - oraclejdk8
