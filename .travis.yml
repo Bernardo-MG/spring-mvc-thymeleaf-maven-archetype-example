@@ -3,7 +3,6 @@
 
 # Using Java for the project
 language: java
-"dist": "precise"
 jdk:
 # JDK 8 is set to deploy the docs and artifacts
   - oraclejdk8
@@ -12,6 +11,7 @@ env:
   - SERVER=jetty DATABASE=mysql
   - SERVER=tomcat7 DATABASE=h2
   - SERVER=tomcat7 DATABASE=mysql
+dist: precise
 
 before_install:
   # Gets scripts
