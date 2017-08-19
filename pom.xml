@@ -5,7 +5,7 @@
    <modelVersion>4.0.0</modelVersion>
 
    <!-- ********************************************** -->
-   <!-- ****************** BASE POM ****************** -->
+   <!-- ***************** PARENT POM ***************** -->
    <!-- ********************************************** -->
 
    <parent>
@@ -20,7 +20,7 @@
 
    <groupId>com.wandrell.example</groupId>
    <artifactId>spring-mvc-thymeleaf-maven-archetype-example</artifactId>
-   <version>0.1.0-SNAPSHOT</version>
+   <version>0.0.1-SNAPSHOT</version>
    <packaging>war</packaging>
 
    <name>Spring MVC Project</name>
@@ -126,7 +126,7 @@
          <id>h2</id>
          <properties>
             <!-- Access data -->
-            <database.url>jdbc:h2:mem:spring_mvc_thymeleaf_maven_archetype_example</database.url>
+            <database.url>jdbc:h2:mem:spring-mvc-thymeleaf-maven-archetype-example</database.url>
             <database.username>sa</database.username>
             <database.password></database.password>
             <!-- Spring context -->
@@ -147,7 +147,7 @@
          <id>mysql</id>
          <properties>
             <!-- Access data -->
-            <database.url>jdbc:mysql://localhost:3306/spring_mvc_thymeleaf_maven_archetype_example</database.url>
+            <database.url>jdbc:mysql://localhost:3306/spring-mvc-thymeleaf-maven-archetype-example</database.url>
             <database.username>root</database.username>
             <database.password></database.password>
             <!-- Spring context -->
@@ -174,7 +174,7 @@
             <site>
                <id>site</id>
                <name>Project Documentation Site</name>
-               <url>scp://docs.wandrell.com:2222/home1/duenco/www/maven/spring-mvc-thymeleaf-maven-archetype-example</url>
+               <url>scp://docs.wandrell.com/spring-mvc-thymeleaf-maven-archetype-example</url>
             </site>
          </distributionManagement>
       </profile>
@@ -186,7 +186,7 @@
             <site>
                <id>site-development</id>
                <name>Project Development Documentation Site</name>
-               <url>scp://docs.wandrell.com:2222/home1/duenco/www/development/maven/spring-mvc-thymeleaf-maven-archetype-example</url>
+               <url>scp://docs.wandrell.com/spring-mvc-thymeleaf-maven-archetype-example</url>
             </site>
          </distributionManagement>
       </profile>
@@ -345,7 +345,7 @@
       <testng.version>6.11</testng.version>
       <thymeleaf.version>3.0.7.RELEASE</thymeleaf.version>
       <webjars.bootstrap.version>3.3.7-1</webjars.bootstrap.version>
-      <webjars.bootswatch.simplex.version>3.3.5+4</webjars.bootswatch.simplex.version>
+      <webjars.bootswatch.version>3.3.5+4</webjars.bootswatch.version>
       <webjars.datatables.version>1.10.12-1</webjars.datatables.version>
       <webjars.fontAwesome.version>4.6.3</webjars.fontAwesome.version>
       <webjars.html5shiv.version>3.7.3</webjars.html5shiv.version>
@@ -521,10 +521,10 @@
          <version>${webjars.bootstrap.version}</version>
       </dependency>
       <dependency>
-         <!-- Bootswatch Simplex -->
+         <!-- Bootswatch Readable -->
          <groupId>org.webjars</groupId>
-         <artifactId>bootswatch-simplex</artifactId>
-         <version>${webjars.bootswatch.simplex.version}</version>
+         <artifactId>bootswatch-readable</artifactId>
+         <version>${webjars.bootswatch.version}</version>
       </dependency>
       <dependency>
          <!-- Datatables -->
@@ -774,7 +774,7 @@
                      <targetPath>WEB-INF/templates/fragments</targetPath>
                      <includes>
                         <!-- Filter the template footer -->
-                        <include>footer.html</include>
+                        <include>**.html</include>
                      </includes>
                      <filtering>true</filtering>
                   </resource>

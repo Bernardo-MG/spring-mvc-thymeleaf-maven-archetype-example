@@ -36,6 +36,13 @@ import com.wandrell.example.spring_mvc_thymeleaf_maven_archetype_example.model.p
  */
 public interface ExampleEntityReportService {
 
+    /**
+     * Returns the report for the received data.
+     * 
+     * @param data
+     *            data to populate the report
+     * @return the report for the data
+     */
     public JasperPrint getReport(final Iterable<DefaultExampleEntity> data);
 
 }

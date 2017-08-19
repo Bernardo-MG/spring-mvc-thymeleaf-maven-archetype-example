@@ -85,6 +85,8 @@ $ mvn tomcat7:run-war -P h2,tomcat7
 
 After this the project will be accessible at [http://localhost:8080/spring-mvc-thymeleaf-maven-archetype-example/].
 
+This path is defined in the server.test.path property inside the pom. Change it to use another path.
+
 ## Collaborate
 
 Any kind of help with the project will be well received, and there are two main ways to give such help:

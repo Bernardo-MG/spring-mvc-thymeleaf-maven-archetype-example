@@ -24,15 +24,9 @@
 
 package com.wandrell.example.spring_mvc_thymeleaf_maven_archetype_example.controller.exception;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.wandrell.example.spring_mvc_thymeleaf_maven_archetype_example.service.ExampleEntityService;
 
 /**
  * Controller which generates a runtime exception.
