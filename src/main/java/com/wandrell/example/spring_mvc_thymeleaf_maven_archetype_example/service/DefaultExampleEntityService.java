@@ -26,6 +26,8 @@ package com.wandrell.example.spring_mvc_thymeleaf_maven_archetype_example.servic
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -83,9 +85,9 @@ public class DefaultExampleEntityService implements ExampleEntityService {
 
         checkNotNull(identifier, "Received a null pointer as identifier");
 
-        entity = getExampleEntityRepository().findOne(identifier);
-
-        if (entity == null) {
+        try {
+            entity = getExampleEntityRepository().getOne(identifier);
+        } catch (final EntityNotFoundException e) {
             entity = new DefaultExampleEntity();
         }
 
