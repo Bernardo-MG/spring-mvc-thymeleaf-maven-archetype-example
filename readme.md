@@ -12,7 +12,7 @@ Before beginning with the new project there are a few things which should be edi
 
 Note that the Maven site is using the [Docs Maven Skin](https://github.com/Bernardo-MG/docs-maven-skin), which will have a few configuration requirements of its own.
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.wandrell.example/spring-mvc-thymeleaf-maven-archetype-example.svg)][maven-repo]
+[![Maven Central](https://img.shields.io/maven-central/v/com.bernardomg.example/spring-mvc-thymeleaf-maven-archetype-example.svg)][maven-repo]
 [![Bintray](https://api.bintray.com/packages/bernardo-mg/maven/spring-mvc-thymeleaf-maven-archetype-example/images/download.svg)][bintray-repo]
 
 [![Release docs](https://img.shields.io/badge/docs-release-blue.svg)][site-release]
@@ -31,7 +31,7 @@ The project by default comes with a useful series of features:
 - Using [Bootstrap](http://getbootstrap.com/) for the UI.
 - Using [Liquibase](http://www.liquibase.org/) for database versioning.
 - Integration with [Jasper Reports](http://community.jaspersoft.com/) for generating PDFs.
-- Prepared for [Travis CI](https://travis-ci.org/), including configuration files and deployment scripts. Check the [Archetype documentation](http://docs.wandrell.com/maven/library-maven-archetype) to find out more.
+- Prepared for [Travis CI](https://travis-ci.org/), including configuration files and deployment scripts. Check the [Archetype documentation](http://docs.bernardomg.com/maven/library-maven-archetype) to find out more.
 - Unit and integration tests suites ready to be run with [TestNG](http://testng.org/) just by using the Maven test and verify commands.
 - A Maven site, using the [Docs Maven Skin](https://github.com/Bernardo-MG/docs-maven-skin), to contain the documentation, the Javadocs and several reports.
 - A bunch of useful files, such as readme, gitignore and gitattributes.
@@ -144,11 +144,11 @@ If you wish to fork or modify the code, visit the [GitHub project page][scm], wh
 The project has been released under the [MIT License][license].
 
 [bintray-repo]: https://bintray.com/bernardo-mg/maven/spring-mvc-thymeleaf-maven-archetype-example/view
-[maven-repo]: http://mvnrepository.com/artifact/com.wandrell.example/spring-mvc-thymeleaf-maven-archetype-example
+[maven-repo]: http://mvnrepository.com/artifact/com.bernardomg.example/spring-mvc-thymeleaf-maven-archetype-example
 [issues]: https://github.com/bernardo-mg/spring-mvc-thymeleaf-maven-archetype-example/issues
-[javadoc-develop]: http://docs.wandrell.com/development/maven/spring-mvc-thymeleaf-maven-archetype-example/apidocs
-[javadoc-release]: http://docs.wandrell.com/maven/spring-mvc-thymeleaf-maven-archetype-example/apidocs
+[javadoc-develop]: ${urlSiteDevelop}/spring-mvc-thymeleaf-maven-archetype-example/apidocs
+[javadoc-release]: ${urlSiteRelease}/spring-mvc-thymeleaf-maven-archetype-example/apidocs
 [license]: http://www.opensource.org/licenses/mit-license.php
 [scm]: https://github.com/bernardo-mg/spring-mvc-thymeleaf-maven-archetype-example
-[site-develop]: http://docs.wandrell.com/development/maven/spring-mvc-thymeleaf-maven-archetype-example
-[site-release]: http://docs.wandrell.com/maven/spring-mvc-thymeleaf-maven-archetype-example
+[site-develop]: ${urlSiteDevelop}/spring-mvc-thymeleaf-maven-archetype-example
+[site-release]: ${urlSiteRelease}/spring-mvc-thymeleaf-maven-archetype-example

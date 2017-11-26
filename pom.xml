@@ -9,16 +9,16 @@
    <!-- ********************************************** -->
 
    <parent>
-      <groupId>com.wandrell.maven</groupId>
+      <groupId>com.bernardomg.maven</groupId>
       <artifactId>base-pom</artifactId>
-      <version>1.1.6</version>
+      <version>1.2.0</version>
    </parent>
 
    <!-- ********************************************** -->
    <!-- **************** PROJECT INFO **************** -->
    <!-- ********************************************** -->
 
-   <groupId>com.wandrell.example</groupId>
+   <groupId>com.bernardomg.example</groupId>
    <artifactId>spring-mvc-thymeleaf-maven-archetype-example</artifactId>
    <version>0.0.1-SNAPSHOT</version>
    <packaging>war</packaging>
@@ -300,7 +300,8 @@
             <site>
                <id>site</id>
                <name>Project Documentation Site</name>
-               <url>scp://docs.wandrell.com/spring-mvc-thymeleaf-maven-archetype-example</url>
+               <!-- The URL should be set externally -->
+               <url>${site.release.url}</url>
             </site>
          </distributionManagement>
       </profile>
@@ -312,7 +313,8 @@
             <site>
                <id>site-development</id>
                <name>Project Development Documentation Site</name>
-               <url>scp://docs.wandrell.com/spring-mvc-thymeleaf-maven-archetype-example</url>
+               <!-- The URL should be set externally -->
+               <url>${site.develop.url}</url>
             </site>
          </distributionManagement>
       </profile>
@@ -340,7 +342,7 @@
       <developer>
          <id>bmg</id>
          <name>Bernardo Martínez Garrido</name>
-         <email>programming@wandrell.com</email>
+         <email>programming@bernardomg.com</email>
          <url>https://github.com/Bernardo-MG</url>
          <organization>Bernardo Martínez Garrido</organization>
          <organizationUrl>https://github.com/Bernardo-MG</organizationUrl>
@@ -364,7 +366,7 @@
       <!-- ============================================== -->
       <!-- =============== MANIFEST DATA ================ -->
       <!-- ============================================== -->
-      <manifest.name>com/wandrell/example/spring_mvc_thymeleaf_maven_archetype_example</manifest.name>
+      <manifest.name>com/bernardomg/example/spring_mvc_thymeleaf_maven_archetype_example</manifest.name>
       <!-- ============================================== -->
       <!-- =============== TESTING SERVER =============== -->
       <!-- ============================================== -->
@@ -413,7 +415,7 @@
       <!-- ============================================== -->
       <!-- ================= MAVEN SITE ================= -->
       <!-- ============================================== -->
-      <site.skin.version>1.0.0</site.skin.version>
+      <site.skin.version>1.2.0</site.skin.version>
       <serverTestPath>${server.test.path}</serverTestPath>
    </properties>
 
@@ -794,7 +796,7 @@
             <dependencies>
                <dependency>
                   <!-- Docs Maven Skin -->
-                  <groupId>com.wandrell.maven.skins</groupId>
+                  <groupId>com.bernardomg.maven.skins</groupId>
                   <artifactId>docs-maven-skin</artifactId>
                   <version>${site.skin.version}</version>
                </dependency>
