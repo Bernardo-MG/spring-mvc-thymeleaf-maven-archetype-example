@@ -34,8 +34,8 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.entity.ExampleEntityFormController;
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.entity.ExampleEntityViewConstants;
@@ -71,7 +71,7 @@ public final class TestExampleEntityFormControllerMissingData {
      * <p>
      * It expects all the responses to have the OK (200) HTTP code.
      */
-    @BeforeTest
+    @BeforeEach
     public final void setUpMockContext() {
         mockMvc = MockMvcBuilders.standaloneSetup(getController())
                 .alwaysExpect(MockMvcResultMatchers.status().isOk()).build();

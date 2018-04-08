@@ -30,9 +30,9 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
-import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.junit.Assert;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.entity.bean.ExampleEntityForm;
 
@@ -61,7 +61,7 @@ public final class TestExampleEntityFormValidation {
     /**
      * Sets up the validator for the tests.
      */
-    @BeforeTest
+    @BeforeEach
     public final void setUpValidator() {
         validator = createValidator();
     }
@@ -81,10 +81,10 @@ public final class TestExampleEntityFormValidation {
 
         errors = validator.validate(form);
 
-        Assert.assertEquals(errors.size(), 1);
+        Assert.assertEquals(1, errors.size());
 
         error = errors.iterator().next();
-        Assert.assertEquals(error.getPropertyPath().toString(), "name");
+        Assert.assertEquals("name", error.getPropertyPath().toString());
     }
 
     /**
@@ -102,10 +102,10 @@ public final class TestExampleEntityFormValidation {
 
         errors = validator.validate(form);
 
-        Assert.assertEquals(errors.size(), 1);
+        Assert.assertEquals(1, errors.size());
 
         error = errors.iterator().next();
-        Assert.assertEquals(error.getPropertyPath().toString(), "name");
+        Assert.assertEquals("name", error.getPropertyPath().toString());
     }
 
     /**

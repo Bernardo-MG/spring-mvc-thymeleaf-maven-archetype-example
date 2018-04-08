@@ -26,13 +26,19 @@ package com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.test
 
 import java.util.Collection;
 
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.testng.AbstractTransactionalTestNGSpringContextTests;
-import org.testng.annotations.Test;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+import org.springframework.test.context.web.WebAppConfiguration;
+import org.junit.jupiter.api.Test;
 
-import org.testng.Assert;
+import org.junit.Assert;
 
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.model.ExampleEntity;
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.model.persistence.DefaultExampleEntity;
@@ -45,13 +51,16 @@ import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.servi
  * the example entities repository, these tests are for verifying everything is
  * set up correctly and working.
  */
+@RunWith(JUnitPlatform.class)
+@ExtendWith(SpringExtension.class)
+@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class })
+@WebAppConfiguration
 @ContextConfiguration(locations = { "classpath:context/service.xml",
         "classpath:context/persistence.xml",
         "classpath:context/application-context.xml" })
 @TestPropertySource({ "classpath:config/persistence-access.properties",
         "classpath:config/service.properties" })
-public final class ITDefaultExampleEntityService
-        extends AbstractTransactionalTestNGSpringContextTests {
+public final class ITDefaultExampleEntityService {
 
     /**
      * Service being tested.

@@ -9,18 +9,12 @@
 
    <!-- Properties -->
    <context:property-placeholder
-      location="classpath:config/persistence-@spring.profile.database@.properties, 
+      location="classpath:config/persistence-@database.tag@.properties, 
                    classpath:config/persistence-access.properties,
                    classpath:config/persistence.properties" />
 
    <!-- Imports -->
    <import resource="classpath:context/persistence.xml" />
-
-   <!-- ======================= LIQUIBASE DB VERSIONING ========================= -->
-
-   <bean id="liquibase" class="${liquibase.integration.class}">
-      <property name="dataSource" ref="dataSource" />
-      <property name="changeLog" value="${liquibase.changelog.path}" />
-   </bean>
+   <import resource="classpath:context/persistence-versioning.xml" />
 
 </beans>
