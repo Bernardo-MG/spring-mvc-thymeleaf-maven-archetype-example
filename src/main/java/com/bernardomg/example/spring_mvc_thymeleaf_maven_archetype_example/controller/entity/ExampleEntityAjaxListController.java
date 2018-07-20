@@ -22,39 +22,47 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller;
+package com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.entity;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Controller for home view.
+ * Controller for the example entities listing view using AJAX.
+ * <p>
+ * This serves as an adapter between the UI and the services layer.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @Controller
-public class ErrorController {
+@RequestMapping("/entity")
+public class ExampleEntityAjaxListController {
 
     /**
-     * Name for the 404 error view.
+     * Constructs a controller.
      */
-    private static final String VIEW_404 = "404";
-
-    /**
-     * Default constructor.
-     */
-    public ErrorController() {
+    public ExampleEntityAjaxListController() {
         super();
     }
 
     /**
-     * Shows the 404 error view.
+     * Shows the entities listing view.
+     * <p>
+     * Actually it just returns the name of the view. Spring will take care of
+     * the rest.
+     * <p>
+     * Before returning the name the model should be loaded with all the data
+     * required by the view.
      * 
-     * @return the 404 error view
+     * @param model
+     *            model map
+     * @return the name for the entities listing view
      */
-    @RequestMapping("/404")
-    public final String show404() {
-        return VIEW_404;
+    @GetMapping(path = "/list/ajax")
+    public final String showEntityList(final ModelMap model) {
+        return ExampleEntityViewConstants.VIEW_ENTITY_LIST_AJAX;
     }
 
 }

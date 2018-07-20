@@ -22,11 +22,8 @@
  * SOFTWARE.
  */
 /**
- * Controller beans. DTOs for handling the data sent between the view and
+ * Form objects. These are DTOs mapping the data sent between the view and
  * controllers.
- * <p>
- * These DTOs are meant for a specific view and not for being reusable, and for
- * that reason they don't implement an interface.
  */
 
-package com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.entity.bean;
+package com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.model.form;

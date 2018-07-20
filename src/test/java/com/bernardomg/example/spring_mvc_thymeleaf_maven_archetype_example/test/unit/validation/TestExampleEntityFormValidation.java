@@ -34,7 +34,7 @@ import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.entity.bean.ExampleEntityForm;
+import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.model.form.ExampleEntityForm;
 
 /**
  * Unit tests for {@link ExampleEntityForm} bean validation.

@@ -22,40 +22,39 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.test.config;
+package com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.error;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Contains configuration information for the controller URLs.
+ * Controller for home view.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class UrlConfig {
+@Controller
+public class ErrorController {
 
     /**
-     * Form view URL.
+     * Name for the 404 error view.
      */
-    public static final String URL_FORM      = "/entity/edit";
+    private static final String VIEW_404 = "404";
 
     /**
-     * URL for posting the form data.
+     * Default constructor.
      */
-    public static final String URL_FORM_POST = "/entity";
-
-    /**
-     * Entities list view URL.
-     */
-    public static final String URL_LIST      = "/entity/list";
-
-    /**
-     * Entities REST URL.
-     */
-    public static final String URL_REST      = "/rest/entity";
-
-    /**
-     * Default constructor to avoid initialization.
-     */
-    private UrlConfig() {
+    public ErrorController() {
         super();
+    }
+
+    /**
+     * Shows the 404 error view.
+     * 
+     * @return the 404 error view
+     */
+    @RequestMapping("/404")
+    public final String show404() {
+        return VIEW_404;
     }
 
 }

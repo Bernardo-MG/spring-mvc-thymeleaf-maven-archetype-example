@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2017 the original author or authors.
+ * Copyright (c) 2017-2018 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,9 @@
 package com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.test.unit.controller.form;
 
 import java.util.Collection;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import java.util.ArrayList;
 
 import org.mockito.Mockito;
@@ -74,7 +77,7 @@ public final class TestExampleEntityFormControllerMissingData {
     @BeforeEach
     public final void setUpMockContext() {
         mockMvc = MockMvcBuilders.standaloneSetup(getController())
-                .alwaysExpect(MockMvcResultMatchers.status().isOk()).build();
+                .alwaysExpect(status().is4xxClientError()).build();
     }
 
     /**

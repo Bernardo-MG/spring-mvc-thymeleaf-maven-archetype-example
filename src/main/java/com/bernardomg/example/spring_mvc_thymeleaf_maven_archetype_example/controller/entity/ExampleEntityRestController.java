@@ -27,23 +27,22 @@ package com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.cont
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.model.ExampleEntity;
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.service.ExampleEntityService;
 
 /**
- * Controller for the example entities listing view.
- * <p>
- * This serves as an adapter between the UI and the services layer.
+ * Rest controller for the example entities.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@Controller
-@RequestMapping("/entity")
-public class ExampleEntityListController {
+@RestController
+@RequestMapping("/rest/entity")
+public class ExampleEntityRestController {
 
     /**
      * Example entity service.
@@ -57,7 +56,7 @@ public class ExampleEntityListController {
      *            example entity service
      */
     @Autowired
-    public ExampleEntityListController(final ExampleEntityService service) {
+    public ExampleEntityRestController(final ExampleEntityService service) {
         super();
 
         exampleEntityService = checkNotNull(service,
@@ -65,24 +64,15 @@ public class ExampleEntityListController {
     }
 
     /**
-     * Shows the entities listing view.
-     * <p>
-     * Actually it just returns the name of the view. Spring will take care of
-     * the rest.
-     * <p>
-     * Before returning the name the model should be loaded with all the data
-     * required by the view.
+     * Returns a paginated collection of entities.
      * 
-     * @param model
-     *            model map
-     * @return the name for the entities listing view
+     * @param page
+     *            pagination data
+     * @return a paginated collection of entities
      */
-    @GetMapping(path = "/list")
-    public final String showEntityList(final ModelMap model) {
-        // Loads required data into the model
-        loadViewModel(model);
-
-        return ExampleEntityViewConstants.VIEW_ENTITY_LIST;
+    @GetMapping
+    public final Iterable<? extends ExampleEntity> getEntities(final Pageable page) {
+        return getExampleEntityService().getEntities(page);
     }
 
     /**
@@ -92,20 +82,6 @@ public class ExampleEntityListController {
      */
     private final ExampleEntityService getExampleEntityService() {
         return exampleEntityService;
-    }
-
-    /**
-     * Loads the model data required for the entities listing view.
-     * <p>
-     * As the view will list all the entities, it requires these entities as one
-     * of the parameters.
-     * 
-     * @param model
-     *            model map
-     */
-    private final void loadViewModel(final ModelMap model) {
-        model.put(ExampleEntityViewConstants.PARAM_ENTITIES,
-                getExampleEntityService().getAllEntities());
     }
 
 }

@@ -24,6 +24,8 @@
 
 package com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.service;
 
+import org.springframework.data.domain.Pageable;
+
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.model.persistence.DefaultExampleEntity;
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.model.ExampleEntity;
 
@@ -64,6 +66,15 @@ public interface ExampleEntityService {
      * @return the persisted entities
      */
     public Iterable<DefaultExampleEntity> getAllEntities();
+
+    /**
+     * Returns a paginated collection of entities.
+     * 
+     * @param page
+     *            pagination data
+     * @return a paginated collection of entities
+     */
+    public Iterable<DefaultExampleEntity> getEntities(final Pageable page);
 
     /**
      * Removes an entity from persistence.

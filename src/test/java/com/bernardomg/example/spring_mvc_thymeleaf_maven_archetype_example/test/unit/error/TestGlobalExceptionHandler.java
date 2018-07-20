@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2017-2018 the original author or authors.
+ * Copyright (c) 2017 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,10 +22,7 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.test.unit.controller.form;
-
-import java.util.Collection;
-import java.util.ArrayList;
+package com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.test.unit.error;
 
 import org.mockito.Mockito;
 import org.springframework.test.web.servlet.MockMvc;
@@ -37,9 +34,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.error.GlobalExceptionHandler;
+import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.error.ErrorViewConstants;
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.entity.ExampleEntityFormController;
-import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.entity.ExampleEntityViewConstants;
-import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.model.persistence.DefaultExampleEntity;
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.service.ExampleEntityService;
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.test.config.UrlConfig;
 
@@ -49,7 +46,7 @@ import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.test.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class TestExampleEntityFormControllerSendForm {
+public final class TestGlobalExceptionHandler {
 
     /**
      * Mocked MVC context.
@@ -59,7 +56,7 @@ public final class TestExampleEntityFormControllerSendForm {
     /**
      * Default constructor.
      */
-    public TestExampleEntityFormControllerSendForm() {
+    public TestGlobalExceptionHandler() {
         super();
     }
 
@@ -70,24 +67,12 @@ public final class TestExampleEntityFormControllerSendForm {
      */
     @BeforeEach
     public final void setUpMockContext() {
+        final GlobalExceptionHandler exceptionHandler;
+
+        exceptionHandler = new GlobalExceptionHandler();
         mockMvc = MockMvcBuilders.standaloneSetup(getController())
-                .alwaysExpect(MockMvcResultMatchers.status().isOk()).build();
-    }
-
-    /**
-     * Verifies that after receiving valid form data the expected attributes are
-     * loaded into the model.
-     */
-    @Test
-    public final void testSendFormData_ExpectedAttributeModel()
-            throws Exception {
-        final ResultActions result; // Request result
-
-        result = mockMvc.perform(getFormRequest());
-
-        // The response model contains the expected attributes
-        result.andExpect(MockMvcResultMatchers.model()
-                .attributeExists(ExampleEntityViewConstants.BEAN_FORM));
+                .alwaysExpect(MockMvcResultMatchers.status().isOk())
+                .setControllerAdvice(exceptionHandler).build();
     }
 
     /**
@@ -103,7 +88,7 @@ public final class TestExampleEntityFormControllerSendForm {
 
         // The view is valid
         result.andExpect(MockMvcResultMatchers.view()
-                .name(ExampleEntityViewConstants.VIEW_ENTITY_LIST));
+                .name(ErrorViewConstants.VIEW_ERROR));
     }
 
     /**
@@ -113,13 +98,11 @@ public final class TestExampleEntityFormControllerSendForm {
      */
     private final ExampleEntityFormController getController() {
         final ExampleEntityService service; // Mocked service
-        final Collection<DefaultExampleEntity> entities; // Mocked entities
 
         service = Mockito.mock(ExampleEntityService.class);
 
-        entities = new ArrayList<>();
-
-        Mockito.when(service.getAllEntities()).thenReturn(entities);
+        Mockito.when(service.getAllEntities())
+                .thenThrow(RuntimeException.class);
 
         return new ExampleEntityFormController(service);
     }

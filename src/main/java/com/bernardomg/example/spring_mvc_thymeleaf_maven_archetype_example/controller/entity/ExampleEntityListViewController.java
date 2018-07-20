@@ -26,25 +26,16 @@ package com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.cont
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.service.ExampleEntityService;
-import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.model.persistence.DefaultExampleEntity;
-import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.model.form.ExampleEntityForm;
 
 /**
- * Controller for the example entities form view.
+ * Controller for the example entities listing view.
  * <p>
  * This serves as an adapter between the UI and the services layer.
  * 
@@ -52,7 +43,7 @@ import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.model
  */
 @Controller
 @RequestMapping("/entity")
-public class ExampleEntityFormController {
+public class ExampleEntityListViewController {
 
     /**
      * Example entity service.
@@ -66,7 +57,7 @@ public class ExampleEntityFormController {
      *            example entity service
      */
     @Autowired
-    public ExampleEntityFormController(final ExampleEntityService service) {
+    public ExampleEntityListViewController(final ExampleEntityService service) {
         super();
 
         exampleEntityService = checkNotNull(service,
@@ -74,72 +65,24 @@ public class ExampleEntityFormController {
     }
 
     /**
-     * Returns the initial entity form data.
-     * 
-     * @return the initial entity form data
-     */
-    @ModelAttribute(ExampleEntityViewConstants.BEAN_FORM)
-    public final ExampleEntityForm getEntityForm() {
-        return new ExampleEntityForm();
-    }
-
-    /**
-     * Persists an entity.
-     * 
-     * @param model
-     *            model map
-     * @param form
-     *            form data
-     * @param bindingResult
-     *            binding result
-     * @param response
-     *            HTTP response
-     * @return the next view to show
-     */
-    @PostMapping
-    public final String saveEntity(final ModelMap model,
-            @ModelAttribute(ExampleEntityViewConstants.BEAN_FORM) @Valid final ExampleEntityForm form,
-            final BindingResult bindingResult, final HttpServletResponse response) {
-        final String path;
-        final DefaultExampleEntity entity;
-
-        if (bindingResult.hasErrors()) {
-            // Invalid form data
-
-            // Returns to the form view
-            path = ExampleEntityViewConstants.VIEW_ENTITY_FORM;
-
-            // Marks the response as a bad request
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-        } else {
-
-            entity = new DefaultExampleEntity();
-            entity.setName(form.getName());
-
-            getExampleEntityService().add(entity);
-
-            // TODO: This flow decision shouldn't be handled by the controller
-            // TODO: This should be a redirection to the list controller
-            // Loads required data into the model
-            loadViewModel(model);
-
-            path = ExampleEntityViewConstants.VIEW_ENTITY_LIST;
-        }
-
-        return path;
-    }
-
-    /**
-     * Shows the entity edition view.
+     * Shows the entities listing view.
      * <p>
      * Actually it just returns the name of the view. Spring will take care of
      * the rest.
+     * <p>
+     * Before returning the name the model should be loaded with all the data
+     * required by the view.
      * 
-     * @return the name for the entity edition view
+     * @param model
+     *            model map
+     * @return the name for the entities listing view
      */
-    @GetMapping(path = "/edit")
-    public final String showEntityForm() {
-        return ExampleEntityViewConstants.VIEW_ENTITY_FORM;
+    @GetMapping(path = "/list")
+    public final String showEntityList(final ModelMap model) {
+        // Loads required data into the model
+        loadViewModel(model);
+
+        return ExampleEntityViewConstants.VIEW_ENTITY_LIST;
     }
 
     /**

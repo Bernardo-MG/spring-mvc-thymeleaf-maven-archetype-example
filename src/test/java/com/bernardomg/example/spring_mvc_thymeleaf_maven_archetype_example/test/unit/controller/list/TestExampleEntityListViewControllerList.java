@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2017 the original author or authors.
+ * Copyright (c) 2017-2018 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,19 +37,19 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.entity.ExampleEntityListController;
+import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.entity.ExampleEntityListViewController;
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.entity.ExampleEntityViewConstants;
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.model.persistence.DefaultExampleEntity;
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.service.ExampleEntityService;
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.test.config.UrlConfig;
 
 /**
- * Unit tests for {@link ExampleEntityListController}, checking the methods for
+ * Unit tests for {@link ExampleEntityListViewController}, checking the methods for
  * listing entities.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-public final class TestExampleEntityListControllerList {
+public final class TestExampleEntityListViewControllerList {
 
     /**
      * Mocked MVC context.
@@ -59,7 +59,7 @@ public final class TestExampleEntityListControllerList {
     /**
      * Default constructor.
      */
-    public TestExampleEntityListControllerList() {
+    public TestExampleEntityListViewControllerList() {
         super();
     }
 
@@ -95,7 +95,7 @@ public final class TestExampleEntityListControllerList {
      * 
      * @return a mocked controller
      */
-    private final ExampleEntityListController getController() {
+    private final ExampleEntityListViewController getController() {
         final ExampleEntityService service; // Mocked service
         final Collection<DefaultExampleEntity> entities; // Mocked entities
 
@@ -105,7 +105,7 @@ public final class TestExampleEntityListControllerList {
 
         Mockito.when(service.getAllEntities()).thenReturn(entities);
 
-        return new ExampleEntityListController(service);
+        return new ExampleEntityListViewController(service);
     }
 
     /**

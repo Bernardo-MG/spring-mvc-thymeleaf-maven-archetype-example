@@ -21,41 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.test.config;
-
 /**
- * Contains configuration information for the controller URLs.
- * 
- * @author Bernardo Mart&iacute;nez Garrido
+ * Error controllers.
+ * <p>
+ * These take care of application errors, and generate a response for them.
  */
-public final class UrlConfig {
 
-    /**
-     * Form view URL.
-     */
-    public static final String URL_FORM      = "/entity/edit";
-
-    /**
-     * URL for posting the form data.
-     */
-    public static final String URL_FORM_POST = "/entity";
-
-    /**
-     * Entities list view URL.
-     */
-    public static final String URL_LIST      = "/entity/list";
-
-    /**
-     * Entities REST URL.
-     */
-    public static final String URL_REST      = "/rest/entity";
-
-    /**
-     * Default constructor to avoid initialization.
-     */
-    private UrlConfig() {
-        super();
-    }
-
-}
+package com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.error;

@@ -100,9 +100,7 @@ An embedded Tomcat can be used through this other profile:
 mvn tomcat7:run-war -P h2,tomcat7
 ```
 
-With this the project will be accessible at [http://localhost:8080/spring-mvc-thymeleaf-maven-archetype-example/].
-
-This path is defined in the server.test.path property inside the pom, and can be changed by modifying its value.
+With this the project will be accessible at [http://localhost:8080/].
 
 ### Running the tests
 
@@ -146,9 +144,9 @@ The project has been released under the [MIT License][license].
 [bintray-repo]: https://bintray.com/bernardo-mg/maven/spring-mvc-thymeleaf-maven-archetype-example/view
 [maven-repo]: http://mvnrepository.com/artifact/com.bernardomg.example/spring-mvc-thymeleaf-maven-archetype-example
 [issues]: https://github.com/bernardo-mg/spring-mvc-thymeleaf-maven-archetype-example/issues
-[javadoc-develop]: ${urlSiteDevelop}/spring-mvc-thymeleaf-maven-archetype-example/apidocs
-[javadoc-release]: ${urlSiteRelease}/spring-mvc-thymeleaf-maven-archetype-example/apidocs
+[javadoc-develop]: https:///spring-mvc-thymeleaf-maven-archetype-example/apidocs
+[javadoc-release]: https:///spring-mvc-thymeleaf-maven-archetype-example/apidocs
 [license]: http://www.opensource.org/licenses/mit-license.php
 [scm]: https://github.com/bernardo-mg/spring-mvc-thymeleaf-maven-archetype-example
-[site-develop]: ${urlSiteDevelop}/spring-mvc-thymeleaf-maven-archetype-example
-[site-release]: ${urlSiteRelease}/spring-mvc-thymeleaf-maven-archetype-example
+[site-develop]: https:///spring-mvc-thymeleaf-maven-archetype-example
+[site-release]: https:///spring-mvc-thymeleaf-maven-archetype-example
