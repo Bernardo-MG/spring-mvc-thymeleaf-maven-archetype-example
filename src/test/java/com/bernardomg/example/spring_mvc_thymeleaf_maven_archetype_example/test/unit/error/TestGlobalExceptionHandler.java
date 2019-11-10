@@ -33,6 +33,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.error.GlobalExceptionHandler;
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.error.ErrorViewConstants;
@@ -41,11 +43,11 @@ import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.servi
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.test.config.UrlConfig;
 
 /**
- * Unit tests for {@link ExampleEntityFormController}, checking the methods for
- * sending the form data.
+ * Unit tests for {@link GlobalExceptionHandler}, checking that it catches and handles errors.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@RunWith(JUnitPlatform.class)
 public final class TestGlobalExceptionHandler {
 
     /**
@@ -76,8 +78,7 @@ public final class TestGlobalExceptionHandler {
     }
 
     /**
-     * Verifies that after received valid form data the expected view is
-     * returned.
+     * Verifies that when an exception is thrown in the backend  the error view is returned.
      */
     @Test
     public final void testSendFormData_ExpectedView() throws Exception {

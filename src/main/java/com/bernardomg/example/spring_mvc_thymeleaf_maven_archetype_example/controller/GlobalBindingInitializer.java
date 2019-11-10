@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2017 the original author or authors.
+ * Copyright (c) 2019 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ import org.springframework.web.bind.annotation.InitBinder;
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ControllerAdvice
-public final class GlobalBindingInitializer {
+public class GlobalBindingInitializer {
 
     /**
      * Default constructor.
@@ -50,7 +50,7 @@ public final class GlobalBindingInitializer {
      *            data binder
      */
     @InitBinder
-    public final void setDisallowedFields(final WebDataBinder dataBinder) {
+    public void setDisallowedFields(final WebDataBinder dataBinder) {
         dataBinder.setDisallowedFields("id");
     }
 

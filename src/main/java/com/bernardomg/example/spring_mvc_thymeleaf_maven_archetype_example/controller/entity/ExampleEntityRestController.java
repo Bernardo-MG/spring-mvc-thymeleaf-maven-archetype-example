@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2017 the original author or authors.
+ * Copyright (c) 2019 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -71,17 +71,8 @@ public class ExampleEntityRestController {
      * @return a paginated collection of entities
      */
     @GetMapping
-    public final Iterable<? extends ExampleEntity> getEntities(final Pageable page) {
-        return getExampleEntityService().getEntities(page);
-    }
-
-    /**
-     * Returns the example entity service.
-     * 
-     * @return the example entity service
-     */
-    private final ExampleEntityService getExampleEntityService() {
-        return exampleEntityService;
+    public Iterable<? extends ExampleEntity> getEntities(final Pageable page) {
+        return exampleEntityService.getEntities(page);
     }
 
 }

@@ -36,6 +36,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.entity.ExampleEntityListViewController;
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.entity.ExampleEntityViewConstants;
@@ -49,6 +51,7 @@ import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.test.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
+@RunWith(JUnitPlatform.class)
 public final class TestExampleEntityListViewControllerList {
 
     /**

@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2017 the original author or authors.
+ * Copyright (c) 2019 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,7 +42,7 @@ import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.contr
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ControllerAdvice
-public final class GlobalExceptionHandler
+public class GlobalExceptionHandler
         extends AbstractHandlerExceptionResolver {
 
     /**
@@ -59,7 +59,7 @@ public final class GlobalExceptionHandler
     }
 
     @Override
-    protected ModelAndView doResolveException(final HttpServletRequest request,
+    protected final ModelAndView doResolveException(final HttpServletRequest request,
             final HttpServletResponse response, final Object handler,
             final Exception ex) {
         final ModelAndView modelView;

@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2017 the original author or authors.
+ * Copyright (c) 2019 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,6 @@ package com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.cont
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,7 +78,7 @@ public class ExampleEntityFormController {
      * @return the initial entity form data
      */
     @ModelAttribute(ExampleEntityViewConstants.BEAN_FORM)
-    public final ExampleEntityForm getEntityForm() {
+    public ExampleEntityForm getEntityForm() {
         return new ExampleEntityForm();
     }
 
@@ -97,7 +96,7 @@ public class ExampleEntityFormController {
      * @return the next view to show
      */
     @PostMapping
-    public final String saveEntity(final ModelMap model,
+    public String saveEntity(final ModelMap model,
             @ModelAttribute(ExampleEntityViewConstants.BEAN_FORM) @Valid final ExampleEntityForm form,
             final BindingResult bindingResult, final HttpServletResponse response) {
         final String path;
@@ -116,7 +115,7 @@ public class ExampleEntityFormController {
             entity = new DefaultExampleEntity();
             entity.setName(form.getName());
 
-            getExampleEntityService().add(entity);
+            exampleEntityService.add(entity);
 
             // TODO: This flow decision shouldn't be handled by the controller
             // TODO: This should be a redirection to the list controller
@@ -138,17 +137,8 @@ public class ExampleEntityFormController {
      * @return the name for the entity edition view
      */
     @GetMapping(path = "/edit")
-    public final String showEntityForm() {
+    public String showEntityForm() {
         return ExampleEntityViewConstants.VIEW_ENTITY_FORM;
-    }
-
-    /**
-     * Returns the example entity service.
-     * 
-     * @return the example entity service
-     */
-    private final ExampleEntityService getExampleEntityService() {
-        return exampleEntityService;
     }
 
     /**
@@ -162,7 +152,7 @@ public class ExampleEntityFormController {
      */
     private final void loadViewModel(final ModelMap model) {
         model.put(ExampleEntityViewConstants.PARAM_ENTITIES,
-                getExampleEntityService().getAllEntities());
+                exampleEntityService.getAllEntities());
     }
 
 }

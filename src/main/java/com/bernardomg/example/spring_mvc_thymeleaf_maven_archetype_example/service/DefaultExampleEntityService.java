@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2017 the original author or authors.
+ * Copyright (c) 2019 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -65,7 +65,7 @@ public class DefaultExampleEntityService implements ExampleEntityService {
 
     @Override
     public final ExampleEntity add(final DefaultExampleEntity entity) {
-        return getExampleEntityRepository().save(entity);
+        return entityRepository.save(entity);
     }
 
     /**
@@ -84,8 +84,8 @@ public class DefaultExampleEntityService implements ExampleEntityService {
 
         checkNotNull(identifier, "Received a null pointer as identifier");
 
-        if (getExampleEntityRepository().existsById(identifier)) {
-            entity = getExampleEntityRepository().getOne(identifier);
+        if (entityRepository.existsById(identifier)) {
+            entity = entityRepository.getOne(identifier);
         } else {
             entity = new DefaultExampleEntity();
         }
@@ -95,27 +95,18 @@ public class DefaultExampleEntityService implements ExampleEntityService {
 
     @Override
     public final Iterable<DefaultExampleEntity> getAllEntities() {
-        return getExampleEntityRepository().findAll();
+        return entityRepository.findAll();
     }
 
     @Override
     public final Iterable<DefaultExampleEntity>
             getEntities(final Pageable page) {
-        return getExampleEntityRepository().findAll(page);
+        return entityRepository.findAll(page);
     }
 
     @Override
     public final void remove(final DefaultExampleEntity entity) {
-        getExampleEntityRepository().delete(entity);
-    }
-
-    /**
-     * Returns the repository used to acquire the domain entities.
-     *
-     * @return the repository used to acquire the domain entities
-     */
-    private final ExampleEntityRepository getExampleEntityRepository() {
-        return entityRepository;
+        entityRepository.delete(entity);
     }
 
 }

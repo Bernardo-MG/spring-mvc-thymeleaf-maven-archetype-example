@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2017 the original author or authors.
+ * Copyright (c) 2019 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,16 +26,15 @@ package com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.test
 
 import java.util.Collection;
 
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import org.springframework.transaction.annotation.Transactional;
+
 import org.junit.jupiter.api.Test;
 
 import org.junit.Assert;
@@ -52,15 +51,12 @@ import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.servi
  * set up correctly and working.
  */
 @RunWith(JUnitPlatform.class)
-@ExtendWith(SpringExtension.class)
-@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class })
-@WebAppConfiguration
-@ContextConfiguration(locations = { "classpath:context/service.xml",
-        "classpath:context/persistence.xml",
-        "classpath:context/application-context.xml" })
-@TestPropertySource({ "classpath:config/persistence-access.properties",
-        "classpath:config/service.properties" })
-public final class ITDefaultExampleEntityService {
+@SpringJUnitConfig
+@Transactional
+@Rollback
+@ContextConfiguration(locations = { "classpath:context/application-context.xml" })
+@TestPropertySource({ "classpath:config/persistence-access.properties" })
+public class ITDefaultExampleEntityService {
 
     /**
      * Service being tested.
@@ -79,7 +75,7 @@ public final class ITDefaultExampleEntityService {
      * Verifies that the service adds entities into persistence.
      */
     @Test
-    public final void testAdd_NotExisting_Added() {
+    public void testAdd_NotExisting_Added() {
         final DefaultExampleEntity entity; // Entity to add
         final Integer entitiesCount;       // Original number of entities
         final Integer finalEntitiesCount;  // Final number of entities
@@ -103,7 +99,7 @@ public final class ITDefaultExampleEntityService {
      * entity.
      */
     @Test
-    public final void testFindById_Existing_Valid() {
+    public void testFindById_Existing_Valid() {
         final ExampleEntity entity; // Found entity
 
         entity = service.findById(1);
@@ -116,7 +112,7 @@ public final class ITDefaultExampleEntityService {
      * entity.
      */
     @Test
-    public final void testFindById_NotExisting_Invalid() {
+    public void testFindById_NotExisting_Invalid() {
         final ExampleEntity entity; // Found entity
 
         entity = service.findById(100);

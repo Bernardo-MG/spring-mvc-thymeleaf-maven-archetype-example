@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2017 the original author or authors.
+ * Copyright (c) 2019 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -78,20 +78,11 @@ public class ExampleEntityListViewController {
      * @return the name for the entities listing view
      */
     @GetMapping(path = "/list")
-    public final String showEntityList(final ModelMap model) {
+    public String showEntityList(final ModelMap model) {
         // Loads required data into the model
         loadViewModel(model);
 
         return ExampleEntityViewConstants.VIEW_ENTITY_LIST;
-    }
-
-    /**
-     * Returns the example entity service.
-     * 
-     * @return the example entity service
-     */
-    private final ExampleEntityService getExampleEntityService() {
-        return exampleEntityService;
     }
 
     /**
@@ -105,7 +96,7 @@ public class ExampleEntityListViewController {
      */
     private final void loadViewModel(final ModelMap model) {
         model.put(ExampleEntityViewConstants.PARAM_ENTITIES,
-                getExampleEntityService().getAllEntities());
+                exampleEntityService.getAllEntities());
     }
 
 }
