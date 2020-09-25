@@ -21,30 +21,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.service;
-
-import java.io.OutputStream;
-
-import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.model.ExampleEntity;
-
 /**
- * Service for generating reports for the example entities.
- * 
- * @author Bernardo Mart&iacute;nez Garrido
- *
+ * Controller classes.
+ * <p>
+ * These serve as adapters between the view and the rest of the application, and
+ * are the C in the MVC architecture.
+ * <p>
+ * As the view is based on templates, these controllers are tied up to specific
+ * views, and usually they will tell the next view to be shown.
  */
-public interface ExampleEntityReportService {
 
-    /**
-     * Returns the report for the received data.
-     * 
-     * @param data
-     *            data to populate the report
-     * @param output
-     *            stream to store the report
-     */
-    public void getReport(final Iterable<? extends ExampleEntity> data,
-            final OutputStream output);
-
-}
+package com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.config;

@@ -34,8 +34,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver;
 
-import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.error.ErrorViewConstants;
-
 /**
  * Captures and handles exceptions for all the controllers.
  * 

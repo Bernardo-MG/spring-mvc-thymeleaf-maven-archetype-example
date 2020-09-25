@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2017-2018 the original author or authors.
+ * Copyright (c) 2017-2019 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,8 +36,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.entity.ExampleEntityFormController;
 import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.controller.entity.ExampleEntityViewConstants;
@@ -51,7 +49,6 @@ import com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.test.
  * 
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@RunWith(JUnitPlatform.class)
 public final class TestExampleEntityFormControllerSendForm {
 
     /**
