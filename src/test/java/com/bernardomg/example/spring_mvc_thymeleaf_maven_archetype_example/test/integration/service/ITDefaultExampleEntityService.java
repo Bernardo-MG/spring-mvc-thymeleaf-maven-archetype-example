@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2019 the original author or authors.
+ * Copyright (c) 2021 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -85,7 +85,8 @@ public class ITDefaultExampleEntityService {
         finalEntitiesCount = ((Collection<DefaultExampleEntity>) service
                 .getAllEntities()).size();
 
-        Assertions.assertEquals(finalEntitiesCount, new Integer(entitiesCount + 1));
+        Assertions.assertEquals(finalEntitiesCount,
+                new Integer(entitiesCount + 1));
     }
 
     /**
