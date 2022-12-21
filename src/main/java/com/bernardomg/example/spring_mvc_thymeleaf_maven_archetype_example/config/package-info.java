@@ -1,7 +1,7 @@
 /**
  * The MIT License (MIT)
  * <p>
- * Copyright (c) 2021 the original author or authors.
+ * Copyright (c) 2023 the original author or authors.
  * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,11 +24,10 @@
 /**
  * Controller classes.
  * <p>
- * These serve as adapters between the view and the rest of the application, and
- * are the C in the MVC architecture.
+ * These serve as adapters between the view and the rest of the application, and are the C in the MVC architecture.
  * <p>
- * As the view is based on templates, these controllers are tied up to specific
- * views, and usually they will tell the next view to be shown.
+ * As the view is based on templates, these controllers are tied up to specific views, and usually they will tell the
+ * next view to be shown.
  */
 
 package com.bernardomg.example.spring_mvc_thymeleaf_maven_archetype_example.config;
